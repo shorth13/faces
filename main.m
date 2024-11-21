@@ -37,7 +37,7 @@ if false
 end
 
 % N = U*S*V';
-k=196;Z=U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
+k=256;Z=U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
 
 if false
     for j=1:size(Z,2)
@@ -50,8 +50,7 @@ end
 
 X = V(:,1:k);
 Y = imds.Labels=='George_W_Bush';
-mdl = fitcecoc(X, Y);
+mdl = fitcsvm(X, Y);
 
-George_W_Bush=N(:,4477);
-P=U'*George_W_Bush;
-predict(mdl, P')
+George_W_Bush=X(3949,:);
+predict(mdl, George_W_Bush)
