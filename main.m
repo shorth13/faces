@@ -19,7 +19,7 @@ imshow(B(:,:,1))
 D=prod(targetSize);
 B=reshape(B,D,[]);
 
-%B=single(B)./256;
+B=single(B)./256;
 [N,C,SD] = normalize(B);
 
 tic;
