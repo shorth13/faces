@@ -7,9 +7,11 @@ imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernam
 A=readall(imds);
 
 % Play faces
-for j=1:length(A)
-    imshow(A{j}),title(imds.Labels(j),'Interpreter','none');
-    pause(1);
+if false
+    for j=1:length(A)
+        imshow(A{j}),title(imds.Labels(j),'Interpreter','none');
+        pause(1);
+    end
 end
 
 B=cat(3,A{:});
