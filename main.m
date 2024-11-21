@@ -47,3 +47,11 @@ if false
     end
 
 end
+
+X = V(:,1:k);
+Y = imds.Labels=='George_W_Bush';
+mdl = fitcecoc(X, Y);
+
+George_W_Bush=N(:,4477);
+P=U'*George_W_Bush;
+predict(mdl, P')
