@@ -28,5 +28,6 @@ toc;
 
 for j=1:size(U,2)
     imagesc(reshape(U(:,j),targetSize));
+    title(num2str(j));
     pause(1);
 end
