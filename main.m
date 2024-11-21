@@ -28,17 +28,22 @@ tic;
 [U,S,V]=svd(N,'econ');
 toc;
 
-for j=1:size(U,2)
-    imagesc(reshape(U(:,j),targetSize));
-    title([num2str(j),': ',num2str(S(j,j))]);
-    pause(1);
+if false
+    for j=1:size(U,2)
+        imagesc(reshape(U(:,j),targetSize));
+        title([num2str(j),': ',num2str(S(j,j))]);
+        pause(1);
+    end
 end
 
 % N = U*S*V';
-k=80;Z=U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
+k=196;Z=U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
 
-for j=1:size(Z,2)
-    imagesc(reshape(Z(:,j),targetSize));
-    title(imds.Labels(j),'Interpreter','none');
-    pause(0.4);
+if false
+    for j=1:size(Z,2)
+        imagesc(reshape(Z(:,j),targetSize));
+        title(imds.Labels(j),'Interpreter','none');
+        pause(0.5);
+    end
+
 end
