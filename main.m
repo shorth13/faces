@@ -16,9 +16,12 @@ B=cat(3,A{:});
 imshow(B(:,:,1))
 D=prod(targetSize);
 B=reshape(B,D,[]);
-B=single(B)./256;
+
+%B=single(B)./256;
+[N,C,SD] = normalize(B);
+
 tic;
-[U,S,V]=svd(B,'econ');
+[U,S,V]=svd(N,'econ');
 toc;
 
 for j=1:size(U,2)
