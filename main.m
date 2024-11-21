@@ -54,4 +54,4 @@ mdl = fitcsvm(X, Y);
 
 W=X(3949,:);
 I=reshape(U(:,1:k)*S(1:k,1:k)*W',targetSize);
-predict(mdl, W)
+[label, score] = predict(mdl, W)
