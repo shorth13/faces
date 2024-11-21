@@ -19,9 +19,11 @@ imshow(B(:,:,1))
 D=prod(targetSize);
 B=reshape(B,D,[]);
 
+disp('Normalizing data...');
 B=single(B)./256;
 [N,C,SD] = normalize(B);
 
+disp('Finding SVD...');
 tic;
 [U,S,V]=svd(N,'econ');
 toc;
