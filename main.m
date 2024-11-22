@@ -86,4 +86,6 @@ I = reshape(U(:,1:k)*S(1:k,1:k)*W',targetSize);
 imagesc(I);
 colormap gray;
 drawnow;
+
+disp('Running prediction...');
 [label, score] = predict(Mdl, W)
