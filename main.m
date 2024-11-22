@@ -23,7 +23,8 @@ B = reshape(B,D,[]);
 
 disp('Normalizing data...');
 B = single(B)./256;
-[N,C,SD] = normalize(B);
+%[N,C,SD] = normalize(B);
+N=B;
 
 disp('Finding SVD...');
 tic;
@@ -53,10 +54,19 @@ end
 disp('Training Support Vector Machine...');
 X = V(:,1:k);
 Y = imds.Labels=='George_W_Bush';
-mdl = fitcecoc(X, Y,'Coding','onevsall','Learners','svm','Verbose',true);
+% Map to +1/-1
+Y = 2.*Y-1;
+
+tTree = templateTree('surrogate','on');
+tEnsemble = templateEnsemble('GentleBoost',100,tTree);
+
+%mdl = fitcsvm( X, Y,'Verbose',true);
+options = statset('UseParallel',true);
+Mdl = fitcecoc(X,Y,'Coding','onevsall','Learners',tEnsemble,...
+                'Prior','uniform','NumBins',50,'Options',options);
 
 disp('Testing on "Dabya"...');
 W = X(3949,:);
 I = reshape(U(:,1:k)*S(1:k,1:k)*W',targetSize);
 imagesc(I);
-[label, score] = predict(mdl, W)
+[label, score] = predict(Mdl, W)
