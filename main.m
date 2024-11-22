@@ -78,7 +78,8 @@ tEnsemble = templateEnsemble('GentleBoost',100,tTree);
 %mdl = fitcsvm( X, Y,'Verbose',true);
 options = statset('UseParallel',true);
 Mdl = fitcecoc(X,Y,'Coding','onevsall','Learners',tEnsemble,...
-                'Prior','uniform','NumBins',50,'Options',options);
+               'Prior','uniform','NumBins',50,'Options',options,...
+               'Verbose',2);
 
 disp('Testing on "Dabya"...');
 W = X(3949,:);
