@@ -11,9 +11,10 @@ A = readall(imds);
 
 % Play faces
 if false
-    colormap gray;
     for j=1:length(A)
         imshow(A{j}),title(imds.Labels(j),'Interpreter','none');
+        colormap gray;
+        drawnow;
         pause(1);
     end
 end
@@ -41,10 +42,11 @@ else
 end
 
 if false
-    colormap gray;
     for j=1:size(U,2)
         imagesc(reshape(U(:,j), targetSize));
         title([num2str(j),': ',num2str(S(j,j))]);
+        colormap gray;
+        drawnow;
         pause(1);
     end
 end
@@ -57,6 +59,8 @@ if false
     for j=1:size(Z,2)
         imagesc(reshape(Z(:,j),targetSize));
         title(imds.Labels(j),'Interpreter','none');
+        colormap gray;
+        drawnow;
         pause(0.5);
     end
 
