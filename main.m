@@ -1,6 +1,6 @@
 targetSize=[128,128];
 location = fullfile('lfw');
-colormap gray;
+svd_cache = 'svd_cache.mat';
 
 disp('Creating image datastore...');
 imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
@@ -11,6 +11,7 @@ A = readall(imds);
 
 % Play faces
 if false
+    colormap gray;
     for j=1:length(A)
         imshow(A{j}),title(imds.Labels(j),'Interpreter','none');
         pause(1);
@@ -38,6 +39,7 @@ else
 end
 
 if false
+    colormap gray;
     for j=1:size(U,2)
         imagesc(reshape(U(:,j), targetSize));
         title([num2str(j),': ',num2str(S(j,j))]);
@@ -48,8 +50,8 @@ end
 % N = U*S*V';
 k=512;Z=U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
 
-colormap gray;
 if false
+    colormap gray;
     for j=1:size(Z,2)
         imagesc(reshape(Z(:,j),targetSize));
         title(imds.Labels(j),'Interpreter','none');
