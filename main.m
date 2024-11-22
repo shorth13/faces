@@ -4,7 +4,7 @@ location = fullfile('lfw');
 disp('Creating image datastore...');
 imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
-%montage(preview(imds));
+montage(preview(imds));
 disp('Reading all images');
 A = readall(imds);
 
@@ -42,6 +42,7 @@ end
 % N = U*S*V';
 k=512;Z=U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
 
+colormap gray;
 if false
     for j=1:size(Z,2)
         imagesc(reshape(Z(:,j),targetSize));
@@ -61,7 +62,7 @@ tTree = templateTree('surrogate','on');
 tEnsemble = templateEnsemble('GentleBoost',100,tTree);
 
 %mdl = fitcsvm( X, Y,'Verbose',true);
-options = statset('UseParallel',true);
+options = statset('UseParallel',true,'Verbose',2);
 Mdl = fitcecoc(X,Y,'Coding','onevsall','Learners',tEnsemble,...
                 'Prior','uniform','NumBins',50,'Options',options);
 
