@@ -35,6 +35,7 @@ else
     tic;
     [U,S,V] = svd(N,'econ');
     toc;
+    disp('Writing SVD cache...')
     save(svd_cache,'U','S','V');
 end
 
