@@ -16,13 +16,13 @@ if false
     end
 end
 
-B=cat(3,A{:});
+B = cat(3,A{:});
 imshow(B(:,:,1))
-D=prod(targetSize);
-B=reshape(B,D,[]);
+D = prod(targetSize);
+B = reshape(B,D,[]);
 
 disp('Normalizing data...');
-B=single(B)./256;
+B = single(B)./256;
 [N,C,SD] = normalize(B);
 
 disp('Finding SVD...');
