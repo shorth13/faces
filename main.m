@@ -84,4 +84,6 @@ disp('Testing on "Dabya"...');
 W = X(3949,:);
 I = reshape(U(:,1:k)*S(1:k,1:k)*W',targetSize);
 imagesc(I);
+colormap gray;
+drawnow;
 [label, score] = predict(Mdl, W)
