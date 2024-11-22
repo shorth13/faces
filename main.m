@@ -53,7 +53,7 @@ end
 disp('Training Support Vector Machine...');
 X = V(:,1:k);
 Y = imds.Labels=='George_W_Bush';
-mdl = fitcsvm(X, Y,'Verbose',true);
+mdl = fitcecoc(X, Y,'Coding','onevsall','Learners','svm','Verbose',true);
 
 disp('Testing on "Dabya"...');
 W = X(3949,:);
