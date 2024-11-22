@@ -1,5 +1,6 @@
 targetSize=[128,128];
 location = fullfile('lfw');
+colormap gray;
 
 disp('Creating image datastore...');
 imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
@@ -67,7 +68,7 @@ tTree = templateTree('surrogate','on');
 tEnsemble = templateEnsemble('GentleBoost',100,tTree);
 
 %mdl = fitcsvm( X, Y,'Verbose',true);
-options = statset('UseParallel',true,'Verbose',2);
+options = statset('UseParallel',true);
 Mdl = fitcecoc(X,Y,'Coding','onevsall','Learners',tEnsemble,...
                 'Prior','uniform','NumBins',50,'Options',options);
 
