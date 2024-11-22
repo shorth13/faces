@@ -27,7 +27,7 @@ B = single(B)./256;
 
 disp('Finding SVD...');
 tic;
-[U,S,V]=svd(N,'econ');
+[U,S,V] = svd(N,'econ');
 toc;
 
 if false
