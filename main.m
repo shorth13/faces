@@ -26,10 +26,15 @@ B = single(B)./256;
 %[N,C,SD] = normalize(B);
 N=B;
 
-disp('Finding SVD...');
-tic;
-[U,S,V] = svd(N,'econ');
-toc;
+if exist(svd_cache,'file') == 2
+    load(svd_cache)
+else
+    disp('Finding SVD...');
+    tic;
+    [U,S,V] = svd(N,'econ');
+    toc;
+    save(svd_cache,'U','S','V');
+end
 
 if false
     for j=1:size(U,2)
