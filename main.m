@@ -1,10 +1,12 @@
 targetSize=[128,128];
 location = fullfile('lfw');
 
+disp('Creating image datastore...');
 imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
 %montage(preview(imds));
-A=readall(imds);
+disp('Reading all images');
+A = readall(imds);
 
 % Play faces
 if false
