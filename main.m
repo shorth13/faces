@@ -37,7 +37,7 @@ if false
 end
 
 % N = U*S*V';
-k=256;Z=U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
+k=512;Z=U(:,1:k)*S(1:k,1:k)*V(:,1:k)';
 
 if false
     for j=1:size(Z,2)
@@ -50,8 +50,9 @@ end
 
 X = V(:,1:k);
 Y = imds.Labels=='George_W_Bush';
-mdl = fitcsvm(X, Y);
+mdl = fitcsvm(X, Y,'Verbose',true);
 
-W=X(3949,:);
-I=reshape(U(:,1:k)*S(1:k,1:k)*W',targetSize);
+W = X(3949,:);
+I = reshape(U(:,1:k)*S(1:k,1:k)*W',targetSize);
+imagesc(I);
 [label, score] = predict(mdl, W)
