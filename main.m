@@ -55,7 +55,7 @@ X = V(:,1:k);
 Y = imds.Labels=='George_W_Bush';
 mdl = fitcsvm(X, Y,'Verbose',true);
 
-disp('Testing on "W"...');
+disp('Testing on "Dabya"...');
 W = X(3949,:);
 I = reshape(U(:,1:k)*S(1:k,1:k)*W',targetSize);
 imagesc(I);
