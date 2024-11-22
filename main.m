@@ -50,6 +50,7 @@ if false
 
 end
 
+disp('Training Support Vector Machine...');
 X = V(:,1:k);
 Y = imds.Labels=='George_W_Bush';
 mdl = fitcsvm(X, Y,'Verbose',true);
