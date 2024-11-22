@@ -29,6 +29,7 @@ B = single(B)./256;
 N=B;
 
 if exist(svd_cache,'file') == 2
+    disp('Loading SVD from cache...');
     load(svd_cache)
 else
     disp('Finding SVD...');
