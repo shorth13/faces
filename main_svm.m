@@ -14,7 +14,7 @@ location = fullfile('lfw');
 svd_cache = fullfile('cache','svd.mat');
 
 disp('Creating image datastore...');
-imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
+imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
 %montage(preview(imds));
 disp('Reading all images');
@@ -22,12 +22,12 @@ disp('Reading all images');
 person1 = 'Angelina_Jolie';
 person2 = 'Eduardo_Duhalde';
 
-mask1 = imds.Labels==person1;
-mask2 = imds.Labels==person2;
-mask  = mask1|mask2;
-idx = find(mask);
+mask0_1 = imds0.Labels==person1;
+mask0_2 = imds0.Labels==person2;
+mask0  = mask0_1|mask0_2;
+idx = find(mask0);
 
-subds = subset(imds, idx);
+imds = subset(imds0, idx);
 A = readall(subds);
 
 B = cat(3,A{:});
@@ -39,8 +39,9 @@ disp('Normalizing data...');
 B = single(B)./256;
 %[N,C,SD] = normalize(B);
 tic;
-[U,S,V] = svd(N,'econ');
+[U,S,V] = svd(B,'econ');
 toc;
+
 k=2;
 
 disp('Training Support Vector Machine...');
@@ -48,6 +49,9 @@ disp('Training Support Vector Machine...');
 % Observations need to be in rows.
 X0 = V(:,1:k);
 
+mask1 = imds0.Labels==person1;
+mask2 = imds0.Labels==person2;
+mask = mask1|mask2
 
 X = X0(mask,:);
 
