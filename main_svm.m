@@ -10,7 +10,7 @@
 % Binary classification
 % Distinguish between two persons (Angenlina Jolie and Eduardo Duhalde).
 targetSize=[128,128];
-k=3;                                   % Number of features to consider
+k=6;                                   % Number of features to consider
 
 t=tiledlayout('flow');
 
