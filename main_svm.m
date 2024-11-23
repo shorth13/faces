@@ -44,7 +44,7 @@ tic;
 [U,S,V] = svd(B,'econ');
 toc;
 
-k=80;
+k=34;
 
 disp('Training Support Vector Machine...');
 % NOTE: Rows of V are observations, columns are features.
@@ -71,6 +71,6 @@ Mdl = fitcsvm(X, Y,'Verbose', 2);
 
 cv = crossval(Mdl);
 
-[label,Score,Cost] = resubPredict(Mdl);
+[Label,Score,Cost] = resubPredict(Mdl);
 
 
