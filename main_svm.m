@@ -55,7 +55,7 @@ end
 k=256;
 
 disp('Training Support Vector Machine...');
-% NOTE: Rows of V are observations, columns are features
+% NOTE: Rows of V are observations, columns are features.
 X0 = V(:,1:k);
 person1 = 'Angelina_Jolie';
 person2 = 'George_W_Bush';
