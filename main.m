@@ -17,7 +17,7 @@ disp('Creating image datastore...');
 imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
 montage(preview(imds));
-disp('Reading all images');
+disp('Reading all images...');
 A = readall(imds);
 
 % Play faces
