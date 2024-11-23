@@ -11,7 +11,7 @@
 %
 targetSize=[128,128];
 location = fullfile('lfw');
-svd_cache = fullfile('cache','svd.mat';
+svd_cache = fullfile('cache','svd.mat');
 
 disp('Creating image datastore...');
 imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
