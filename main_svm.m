@@ -73,4 +73,4 @@ cv = crossval(Mdl);
 
 [Label,Score,Cost] = resubPredict(Mdl);
 
-conf = confusion(Y,Label);
+
