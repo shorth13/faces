@@ -61,6 +61,10 @@ idx = find(mask);
 X = X0(idx,:);
 Y = imds.Labels(idx);
 
+% Limit the number of categories to just two
+cats = {person1,person2};
+Y=categorical(Y,cats);
+
 % Create colormap
 cm=[1,0,0;
     0,0,1];
