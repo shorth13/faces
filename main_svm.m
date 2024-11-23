@@ -66,6 +66,7 @@ Y = single(L==person1);
 cm=[1,0,0;
     0,0,1];
 c=cm(1+Y,:);
+
 scatter3(X(:,1),X(:,2),X(:,3),60,c);
 
 
