@@ -62,7 +62,6 @@ X = X0(idx,:);
 
 
 Y = imds.Labels(idx);
-numClasses = 
 
 % Create colormap
 cm=[1,0,0;
