@@ -59,13 +59,15 @@ X0 = V(:,1:k);
 person1 = 'Angelina_Jolie';
 person2 = 'George_W_Bush';
 
-idx1 = find(imds.Labels==person1);
-idx2 = find(imds.Labels==person2);
+mask1 = imds.Labels==person1;
+mask2 = imds.Labels==person2;
 
-X = vertcat(X0(idx1,:),X0(idx2,:));
+X = X0(mask1|mask2,:);
 
-Y = vertcat(imds.Labels(idx1),imds.Labels(idx2));
+Y = [imds.Labels(idx1);imds.Labels(idx2)]';
 
-Mdl = fitcsvm( X, Y,'Verbose', 2);
+Mdl = fitcsvm( X, Y','Verbose', 1);
+
+crossval(Mdl);
 
 
