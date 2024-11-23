@@ -52,24 +52,23 @@ else
     save(svd_cache,'U','S','V');
 end
 
-k=512;
+k=256;
 
 disp('Training Support Vector Machine...');
-X = V(:,1:k);
-Y = imds.Labels=='George_W_Bush';
-% Map to +1/-1
-Y = 2.*Y-1;
+X0 = V(:,1:k)';
+person1 = 'Angelina_Jolie';
+person2 = 'George_W_Bush';
 
-tTree = templateTree('surrogate','on');
-tEnsemble = templateEnsemble('GentleBoost',100,tTree);
+idx1 = find(imds.Labels==person1);
+idx2 = find(imds.Labels==person2);
 
-%mdl = fitcsvm( X, Y,'Verbose',true);
-options = statset('UseParallel',true);
-Mdl = fitcecoc(X,Y,'Coding','onevsall','Learners',tEnsemble,...
-               'Prior','uniform','NumBins',50,'Options',options,...
-               'Verbose',2);
+X = horzcat(X0(:,idx1),X0(:,idx2));
 
-disp('Testing on "Dabya"...');
+Y = vertcat(imds.Labels(idx1),imds.Labels(idx2));
+
+Mdl = fitcsvm( X, Y,'Verbose',true);
+
+
 W = X(3949,:);
 I = reshape(U(:,1:k)*S(1:k,1:k)*W',targetSize);
 imagesc(I);
