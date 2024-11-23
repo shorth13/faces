@@ -77,6 +77,7 @@ Mdl = fitcsvm(X, Y,'Verbose', 1);
 cv = crossval(Mdl);
 
 [YPred,Score] = predict(Mdl,X);
+[YPred,Cost,Score] = resubPredict(Mdl,X);
 
 nexttile;
 plotconfusion(Y, YPred);
