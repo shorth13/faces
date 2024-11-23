@@ -26,8 +26,6 @@ mask1 = imds.Labels==person1;
 mask2 = imds.Labels==person2;
 mask  = mask1|mask2;
 
-
-
 A = readall(imds);
 
 
