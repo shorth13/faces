@@ -69,7 +69,7 @@ c=cm(1+Y,:);
 
 
 nexttile;
-scatter3(X(:,1),X(:,2),X(:,3),60,c);
+scatter(X(:,1),X(:,2),60,c);
 
 
 Mdl = fitcsvm(X, Y,'Verbose', 1);
