@@ -65,11 +65,11 @@ mask1 = imds.Labels==person1;
 mask2 = imds.Labels==person2;
 mask = mask1|mask2;
 
-X = X0(mask,:);
+X = X0(:,mask);
 
 Y = imds.Labels(mask);
 
-Mdl = fitcsvm(X, Y,'Verbose', 1);
+Mdl = fitcsvm(X, Y,'Verbose', 2);
 
 cv = crossval(Mdl);
 
