@@ -97,4 +97,4 @@ ylabel(cv.PredictorNames(2));
 disp('Plotting confusion matrix...')
 nexttile(t);
 confusionchart(Y, YPred);
-title(['Number of features: ,num2str(k)]);
+title(['Number of features:' ,num2str(k)]);
