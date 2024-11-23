@@ -18,17 +18,18 @@ imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernam
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
 montage(preview(imds));
 disp('Reading all images');
+
+person1 = 'Angelina_Jolie';
+person2 = 'Eduardo_Duhalde';
+
+mask1 = imds.Labels==person1;
+mask2 = imds.Labels==person2;
+mask  = mask1|mask2;
+
+
+
 A = readall(imds);
 
-% Play faces
-if false
-    for j=1:length(A)
-        imshow(A{j}),title(imds.Labels(j),'Interpreter','none');
-        colormap gray;
-        drawnow;
-        pause(1);
-    end
-end
 
 B = cat(3,A{:});
 imshow(B(:,:,1))
@@ -52,22 +53,23 @@ else
     save(svd_cache,'U','S','V');
 end
 
-k=2
+k=2;
 
 disp('Training Support Vector Machine...');
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
-X0 = 
-person1 = 'Angelina_Jolie';
-person2 = 'Eduardo_Duhalde';
+X0 = V(:,1:k);
 
-mask1 = imds.Labels==person1;
-mask2 = imds.Labels==person2;
-mask  = mask1|mask2;
 
-X = X0(:,mask);
+X = X0(mask,:);
 
 Y = imds.Labels(mask);
+
+plot(X(mask1,1),X(mask1,2),'o');
+hold on;
+plot(X(mask2,1),X(mask2,2),'*');
+hold off;
+
 
 Mdl = fitcsvm(X, Y,'Verbose', 2);
 
