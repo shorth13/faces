@@ -12,7 +12,7 @@
 targetSize=[128,128];
 k=3;                                   % Number of features to consider
 
-layout=tiledlayout;
+layout=tiledLayout;
 
 location = fullfile('lfw');
 svd_cache = fullfile('cache','svd.mat');
