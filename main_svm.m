@@ -41,7 +41,7 @@ disp('Normalizing data...');
 B = single(B)./256;
 [B,C,SD] = normalize(B);
 tic;
-[U,S,V] = svd(B);
+[U,S,V] = svd(B,'econ');
 toc;
 
 k=80;
@@ -49,7 +49,7 @@ k=80;
 disp('Training Support Vector Machine...');
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
-X0 = V(1:k,:)';
+X0 = V(:,1:k);
 
 mask1 = imds.Labels==person1;
 mask2 = imds.Labels==person2;
