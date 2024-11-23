@@ -1,5 +1,5 @@
 %----------------------------------------------------------------
-% File:     main.m
+% File:     main_svm.m
 %----------------------------------------------------------------
 %
 % Author:   Marek Rychlik (rychlik@arizona.edu)
@@ -7,9 +7,12 @@
 % Copying:  (C) Marek Rychlik, 2020. All rights reserved.
 % 
 %----------------------------------------------------------------
-% A basic face recognition system workflow
-%
+% Binary classification
+% Distinguish between two persons (Angenlina Jolie and Eduardo Duhalde).
 targetSize=[128,128];
+k=34;                                   % Number of features to consider
+
+
 location = fullfile('lfw');
 svd_cache = fullfile('cache','svd.mat');
 
@@ -44,7 +47,6 @@ tic;
 [U,S,V] = svd(B,'econ');
 toc;
 
-k=34;
 
 disp('Training Support Vector Machine...');
 % NOTE: Rows of V are observations, columns are features.
