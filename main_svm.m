@@ -68,6 +68,7 @@ cm=[1,0,0;
 c=cm(1+Y,:);
 
 
+nexttile;
 scatter3(X(:,1),X(:,2),X(:,3),60,c);
 
 
@@ -77,6 +78,7 @@ cv = crossval(Mdl);
 
 [YPred,Score] = predict(Mdl,X);
 
+nexttile;
 plotconfusion(Y, YPred);
 
 
