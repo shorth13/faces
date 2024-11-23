@@ -69,7 +69,7 @@ Y=categorical(Y,cats);
 cm=[1,0,0;
     0,0,1];
 % Assign colors to target values
-c=cm(1+Y,:);
+c=cm(uint8(Y),:);
 
 
 disp('Training Support Vector Machine...');
@@ -96,4 +96,4 @@ ylabel(cv.PredictorNames(2));
 
 disp('Plotting confusion matrix...')
 nexttile(t);
-confusionchart(Y, YPred,'ClassLabels',[person1,person2]);
+confusionchart(Y, YPred);
