@@ -16,6 +16,8 @@ svd_cache = fullfile('cache','svd.mat');
 disp('Creating image datastore...');
 imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
+
+disp('Creating subset of 2 persons...');
 person1 = 'Angelina_Jolie';
 person2 = 'Eduardo_Duhalde';
 
