@@ -66,10 +66,12 @@ mask2 = imds.Labels==person2;
 
 X = X0(mask1|mask2,:);
 
-Y = [imds.Labels(idx1);imds.Labels(idx2)];
+Y = imds.Labels(mask1|mask2);
 
 Mdl = fitcsvm(X, Y,'Verbose', 1);
 
 cv = crossval(Mdl);
+
+[label,Score,Cost] = resubPredict(Mdl);
 
 
