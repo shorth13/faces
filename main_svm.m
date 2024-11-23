@@ -41,7 +41,7 @@ disp('Normalizing data...');
 B = single(B)./256;
 [B,C,SD] = normalize(B);
 tic;
-[U,S,V] = svd(B,'econ');
+[U,S,V] = svd(B);
 toc;
 
 k=80;
