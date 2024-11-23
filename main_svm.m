@@ -89,5 +89,5 @@ plot(rm);
 [YPred,Score,Cost] = resubPredict(Mdl);
 
 disp('Plotting confusion matrix...')
-figure;
-plotconfusion(Y, YPred);
+nexttile(t);
+confusionchart(Y, YPred);
