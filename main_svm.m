@@ -98,3 +98,10 @@ disp('Plotting confusion matrix...')
 nexttile(t);
 confusionchart(Y, YPred);
 title(['Number of features: ' ,num2str(k)]);
+
+% Get an montage of eigenfaces
+Eigenfaces = reshape(U,targetSize(1),targetSize(2),[]);
+Eigenfaces = arrayfun(@(I)(I-min(I(:)))./(max(I(:))-min(I(:))),Eigenfaces);
+montage(Eigenfaces);
+
+
