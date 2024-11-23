@@ -30,6 +30,7 @@ mask0  = mask0_1|mask0_2;
 idx = find(mask0);
 
 imds = subset(imds0, idx);
+nexttile;
 montage(imds);
 
 disp('Reading all images');
