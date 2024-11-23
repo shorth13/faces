@@ -102,7 +102,6 @@ title(['Number of features: ' ,num2str(k)]);
 % Get an montage of eigenfaces
 I = arrayfun(@(j)reshape((U(:,j)-min(U(:,j)))./(max(U(:,j))-min(U(:,j))),targetSize), ...
     1:size(U,2),'uni',false);
-reshape(U,targetSize(1),targetSize(2),[]);
 
 nexttile(t);
 montage(Eigenfaces(1:16));
