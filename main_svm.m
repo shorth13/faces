@@ -12,6 +12,7 @@
 targetSize=[128,128];
 k=3;                                   % Number of features to consider
 
+layout=tiledlayout;
 
 location = fullfile('lfw');
 svd_cache = fullfile('cache','svd.mat');
@@ -56,7 +57,7 @@ X0 = V(:,1:k);
 
 mask1 = imds.Labels==person1;
 mask2 = imds.Labels==person2;
-mask = mask1|mask2
+mask = mask1|mask2;
 
 
 X = X0(mask,:);
