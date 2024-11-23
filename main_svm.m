@@ -56,12 +56,13 @@ mask = mask1|mask2
 
 X = X0(mask,:);
 
-Y = imds.Labels(mask);
+L = imds.Labels(mask);
+Y = L==person1;
 
-plot(X(mask1,1),X(mask1,2),'o');
-hold on;
-plot(X(mask2,1),X(mask2,2),'*');
-hold off;
+cm=[1,0,0;
+    0,0,1];
+c=cm(1+Y,:);
+scatter(X(:,1),X(:,2),60,c);
 
 
 Mdl = fitcsvm(X, Y,'Verbose', 2);
