@@ -1,3 +1,13 @@
+%----------------------------------------------------------------
+% File:     main.m
+%----------------------------------------------------------------
+%
+% Author:   Marek Rychlik (rychlik@arizona.edu)
+% Date:     Fri Nov 22 20:02:05 2024
+% Copying:  (C) Marek Rychlik, 2020. All rights reserved.
+% 
+%----------------------------------------------------------------
+% A basic face recognition system
 targetSize=[128,128];
 location = fullfile('lfw');
 svd_cache = 'svd_cache.mat';
