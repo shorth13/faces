@@ -59,8 +59,6 @@ mask = mask1|mask2;
 idx = find(mask);
 
 X = X0(idx,:);
-
-
 Y = imds.Labels(idx);
 
 % Create colormap
