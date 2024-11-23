@@ -71,7 +71,6 @@ cm=[1,0,0;
 % Assign colors to target values
 c=cm(uint8(Y),:);
 
-
 disp('Training Support Vector Machine...');
 tic;
 Mdl = fitcsvm(X, Y,'Verbose', 1);
