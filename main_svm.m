@@ -75,6 +75,7 @@ tic;
 Mdl = fitcsvm(X, Y,'Verbose', 1);
 toc;
 
+% ROC = receiver operating characteristic
 disp('Plotting ROC metrics...');
 cv = crossval(Mdl);
 rm = rocmetrics(cv);
