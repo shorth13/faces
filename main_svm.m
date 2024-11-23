@@ -10,7 +10,7 @@
 % Binary classification
 % Distinguish between two persons (Angenlina Jolie and Eduardo Duhalde).
 targetSize=[128,128];
-k=4;                                   % Number of features to consider
+k=8;                                   % Number of features to consider
 
 t=tiledlayout('flow');
 
@@ -28,9 +28,9 @@ person2 = 'Eduardo_Duhalde';
 mask0_1 = imds0.Labels==person1;
 mask0_2 = imds0.Labels==person2;
 mask0  = mask0_1|mask0_2;
-idx = find(mask0);
+idx0 = find(mask0);
 
-imds = subset(imds0, idx);
+imds = subset(imds0, idx0);
 nexttile(t);
 montage(imds);
 
@@ -56,12 +56,13 @@ X0 = V(:,1:k);
 mask1 = imds.Labels==person1;
 mask2 = imds.Labels==person2;
 mask = mask1|mask2;
+idx = find(mask);
+
+X = X0(idx,:);
 
 
-X = X0(mask,:);
-
-L = imds.Labels(mask);
-Y = single(L==person1);
+Y = imds.Labels(idx);
+numClasses = 
 
 % Create colormap
 cm=[1,0,0;
@@ -94,4 +95,4 @@ ylabel(cv.PredictorNames(2));
 
 disp('Plotting confusion matrix...')
 nexttile(t);
-confusionchart(Y, YPred);
+confusionchart(Y, YPred,'ClassLabels',[person1,person2]);
