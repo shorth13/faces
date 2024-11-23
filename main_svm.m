@@ -52,7 +52,7 @@ else
     save(svd_cache,'U','S','V');
 end
 
-k=256;
+k=2
 
 disp('Training Support Vector Machine...');
 % NOTE: Rows of V are observations, columns are features.
