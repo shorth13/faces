@@ -37,12 +37,12 @@ B = reshape(B,D,[]);
 
 disp('Normalizing data...');
 B = single(B)./256;
-%[N,C,SD] = normalize(B);
+[B,C,SD] = normalize(B);
 tic;
 [U,S,V] = svd(B,'econ');
 toc;
 
-k=2;
+k=3;
 
 disp('Training Support Vector Machine...');
 % NOTE: Rows of V are observations, columns are features.
@@ -62,7 +62,7 @@ Y = L==person1;
 cm=[1,0,0;
     0,0,1];
 c=cm(1+Y,:);
-scatter(X(:,1),X(:,2),60,c);
+scatter3(X(:,1),X(:,2),60,c);
 
 
 Mdl = fitcsvm(X, Y,'Verbose', 2);
