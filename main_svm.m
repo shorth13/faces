@@ -71,7 +71,7 @@ cm=[1,0,0;
 % Assign colors to target values
 c=cm(1+Y,:);
 
-% Generate a plot in feature space
+% Generate a plot in feature space using first two features
 nexttile;
 scatter(X(:,1),X(:,2),60,c);
 
