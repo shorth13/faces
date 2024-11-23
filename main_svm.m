@@ -65,6 +65,7 @@ X = X0(mask,:);
 L = imds.Labels(mask);
 Y = single(L==person1);
 
+% Create colormap
 cm=[1,0,0;
     0,0,1];
 c=cm(1+Y,:);
