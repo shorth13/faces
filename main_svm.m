@@ -38,20 +38,9 @@ B = reshape(B,D,[]);
 disp('Normalizing data...');
 B = single(B)./256;
 %[N,C,SD] = normalize(B);
-N=B;
-
-if exist(svd_cache,'file') == 2
-    disp('Loading SVD from cache...');
-    load(svd_cache)
-else
-    disp('Finding SVD...');
-    tic;
-    [U,S,V] = svd(N,'econ');
-    toc;
-    disp('Writing SVD cache...')
-    save(svd_cache,'U','S','V');
-end
-
+tic;
+[U,S,V] = svd(N,'econ');
+toc;
 k=2;
 
 disp('Training Support Vector Machine...');
