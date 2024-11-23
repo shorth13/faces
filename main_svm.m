@@ -67,7 +67,7 @@ c=cm(1+Y,:);
 scatter3(X(:,1),X(:,2),X(:,3),60,c);
 
 
-Mdl = fitcsvm(X, Y,'Verbose', 2);
+Mdl = fitcsvm(X, Y,'Verbose', 1);
 
 cv = crossval(Mdl);
 
