@@ -89,7 +89,6 @@ xlabel(cv.PredictorNames(1));
 ylabel(cv.PredictorNames(2));
 
 
-
 %[YPred,Score] = predict(Mdl,X);
 [YPred,Score,Cost] = resubPredict(Mdl);
 
