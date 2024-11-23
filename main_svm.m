@@ -106,5 +106,3 @@ Eigenfaces = arrayfun( @(j)(I(:,:,j)-min(I(:,:,j)))./(eps+max(I(:,:,j))-min(I(:,
 nexttile(t);
 montage(Eigenfaces(1:16));
 colormap(winter);
-
-
