@@ -69,11 +69,3 @@ Y = vertcat(imds.Labels(idx1),imds.Labels(idx2));
 Mdl = fitcsvm( X, Y,'Verbose', 2);
 
 
-W = X(3949,:);
-I = reshape(U(:,1:k)*S(1:k,1:k)*W',targetSize);
-imagesc(I);
-colormap gray;
-drawnow;
-
-disp('Running prediction...');
-[label, score] = predict(Mdl, W)
