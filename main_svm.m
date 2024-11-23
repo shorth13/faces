@@ -68,7 +68,7 @@ Y = single(L==person1);
 % Create colormap
 cm=[1,0,0;
     0,0,1];
-% Assign colors to labels
+% Assign colors to target values
 c=cm(1+Y,:);
 
 
