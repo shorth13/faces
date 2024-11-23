@@ -84,7 +84,6 @@ cv = crossval(Mdl);
 %[YPred,Score] = predict(Mdl,X);
 [YPred,Score,Cost] = resubPredict(Mdl);
 
+disp('Plotting confusion matrix...')
 nexttile;
 plotconfusion(Y, YPred);
-
-
