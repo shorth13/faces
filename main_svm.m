@@ -59,7 +59,7 @@ mask = mask1|mask2
 X = X0(mask,:);
 
 L = imds.Labels(mask);
-Y = L==person1;
+Y = single(L==person1);
 
 cm=[1,0,0;
     0,0,1];
@@ -71,6 +71,8 @@ Mdl = fitcsvm(X, Y,'Verbose', 1);
 
 cv = crossval(Mdl);
 
-[Label,Score,Cost] = resubPredict(Mdl);
+[YPred,Score] = predict(Mdl,X);
+
+plotconfusion(Y, YPred);
 
 
