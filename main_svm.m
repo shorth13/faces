@@ -100,8 +100,10 @@ confusionchart(Y, YPred);
 title(['Number of features: ' ,num2str(k)]);
 
 % Get an montage of eigenfaces
-Eigenfaces = reshape(U,targetSize(1),targetSize(2),[]);
-Eigenfaces = arrayfun(@(I)(I-min(I(:)))./(max(I(:))-min(I(:))),Eigenfaces);
+I = reshape(U,targetSize(1),targetSize(2),[]);
+Eigenfaces = arrayfun( @(j)(I(:,:,j)-min(I(:,:,j)))./(max(I(:,:,j))-min(I(:,:,j))),...
+                       1:size(I,3),'uni',false);
 montage(Eigenfaces);
+colormap(gray);
 
 
