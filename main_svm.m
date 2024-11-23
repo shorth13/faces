@@ -59,14 +59,15 @@ disp('Training Support Vector Machine...');
 % Observations need to be in rows.
 X0 = V(:,1:k);
 person1 = 'Angelina_Jolie';
-person2 = 'George_W_Bush';
+person2 = 'Eduardo_Duhalde';
 
 mask1 = imds.Labels==person1;
 mask2 = imds.Labels==person2;
+mask = mask1|mask2;
 
-X = X0(mask1|mask2,:);
+X = X0(mask,:);
 
-Y = imds.Labels(mask1|mask2);
+Y = imds.Labels(mask);
 
 Mdl = fitcsvm(X, Y,'Verbose', 1);
 
