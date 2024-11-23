@@ -49,9 +49,10 @@ disp('Training Support Vector Machine...');
 % Observations need to be in rows.
 X0 = V(:,1:k);
 
-mask1 = imds0.Labels==person1;
-mask2 = imds0.Labels==person2;
+mask1 = imds.Labels==person1;
+mask2 = imds.Labels==person2;
 mask = mask1|mask2
+
 
 X = X0(mask,:);
 
