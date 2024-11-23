@@ -50,7 +50,6 @@ tic;
 toc;
 
 
-disp('Training Support Vector Machine...');
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
 X0 = V(:,1:k);
@@ -75,8 +74,10 @@ c=cm(1+Y,:);
 nexttile;
 scatter(X(:,1),X(:,2),60,c);
 
-
+disp('Training Support Vector Machine...');
+tic;
 Mdl = fitcsvm(X, Y,'Verbose', 1);
+toc;
 
 cv = crossval(Mdl);
 
