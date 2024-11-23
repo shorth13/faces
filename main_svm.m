@@ -44,7 +44,7 @@ tic;
 [U,S,V] = svd(B,'econ');
 toc;
 
-k=30;
+k=80;
 
 disp('Training Support Vector Machine...');
 % NOTE: Rows of V are observations, columns are features.
