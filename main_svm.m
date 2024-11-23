@@ -69,9 +69,6 @@ cm=[1,0,0;
 % Assign colors to target values
 c=cm(1+Y,:);
 
-% Generate a plot in feature space using top two features
-nexttile(t);
-scatter(X(:,1),X(:,2),60,c);
 
 disp('Training Support Vector Machine...');
 tic;
@@ -83,6 +80,13 @@ cv = crossval(Mdl);
 rm=rocmetrics(cv);
 nexttile(t);
 plot(rm);
+
+% Generate a plot in feature space using top two features
+nexttile(t);
+scatter(X(:,1),X(:,2),60,c);
+xlabel(cv.PredictorNames(1));
+ylabel(cv.PredictorNames(2));
+
 
 
 %[YPred,Score] = predict(Mdl,X);
