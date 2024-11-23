@@ -12,7 +12,7 @@
 targetSize=[128,128];
 k=3;                                   % Number of features to consider
 
-layout=tiledlayout('flow');
+t=tiledlayout('flow');
 
 location = fullfile('lfw');
 svd_cache = fullfile('cache','svd.mat');
@@ -79,7 +79,12 @@ tic;
 Mdl = fitcsvm(X, Y,'Verbose', 1);
 toc;
 
+disp('Plotting ROC metrics...');
 cv = crossval(Mdl);
+rm=rocmetrics(cv);
+nexttile;
+plot(rm);
+
 
 %[YPred,Score] = predict(Mdl,X);
 [YPred,Score,Cost] = resubPredict(Mdl);
