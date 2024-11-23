@@ -31,14 +31,13 @@ mask0  = mask0_1|mask0_2;
 idx = find(mask0);
 
 imds = subset(imds0, idx);
-nexttile;
+nexttile(t);
 montage(imds);
 
 disp('Reading all images');
 A = readall(imds);
 
 B = cat(3,A{:});
-imshow(B(:,:,1))
 D = prod(targetSize);
 B = reshape(B,D,[]);
 
@@ -71,7 +70,7 @@ cm=[1,0,0;
 c=cm(1+Y,:);
 
 % Generate a plot in feature space using top two features
-nexttile;
+nexttile(t);
 scatter(X(:,1),X(:,2),60,c);
 
 disp('Training Support Vector Machine...');
@@ -82,7 +81,7 @@ toc;
 disp('Plotting ROC metrics...');
 cv = crossval(Mdl);
 rm=rocmetrics(cv);
-nexttile;
+nexttile(t);
 plot(rm);
 
 
@@ -90,5 +89,5 @@ plot(rm);
 [YPred,Score,Cost] = resubPredict(Mdl);
 
 disp('Plotting confusion matrix...')
-nexttile;
+figure;
 plotconfusion(Y, YPred);
