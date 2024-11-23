@@ -27,10 +27,10 @@ mask0  = mask0_1|mask0_2;
 idx = find(mask0);
 
 imds = subset(imds0, idx);
-montage(preview(imds));
+montage(imds);
 
 disp('Reading all images');
-A = readall(subds);
+A = readall(imds);
 
 B = cat(3,A{:});
 imshow(B(:,:,1))
@@ -49,7 +49,7 @@ k=3;
 disp('Training Support Vector Machine...');
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
-X0 = V(:,1:k);
+X0 = V(1:k,:)';
 
 mask1 = imds.Labels==person1;
 mask2 = imds.Labels==person2;
