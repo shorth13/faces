@@ -16,7 +16,7 @@ svd_cache = fullfile('cache','svd.mat');
 disp('Creating image datastore...');
 imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
-%montage(preview(imds));
+montage(preview(imds));
 disp('Reading all images');
 
 person1 = 'Angelina_Jolie';
@@ -62,7 +62,7 @@ Y = L==person1;
 cm=[1,0,0;
     0,0,1];
 c=cm(1+Y,:);
-scatter3(X(:,1),X(:,2),60,c);
+scatter3(X(:,1),X(:,2),X(:,3),60,c);
 
 
 Mdl = fitcsvm(X, Y,'Verbose', 2);
