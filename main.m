@@ -7,7 +7,8 @@
 % Copying:  (C) Marek Rychlik, 2020. All rights reserved.
 % 
 %----------------------------------------------------------------
-% A basic face recognition system
+% A basic face recognition system workflow
+%
 targetSize=[128,128];
 location = fullfile('lfw');
 svd_cache = 'svd_cache.mat';
