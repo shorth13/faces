@@ -16,7 +16,7 @@ svd_cache = fullfile('cache','svd.mat');
 disp('Creating image datastore...');
 imds = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
-montage(preview(imds));
+%montage(preview(imds));
 disp('Reading all images');
 
 person1 = 'Angelina_Jolie';
@@ -25,9 +25,10 @@ person2 = 'Eduardo_Duhalde';
 mask1 = imds.Labels==person1;
 mask2 = imds.Labels==person2;
 mask  = mask1|mask2;
+idx = find(mask);
 
-A = readall(imds);
-
+subds = subset(imds, idx);
+A = readall(subds);
 
 B = cat(3,A{:});
 imshow(B(:,:,1))
