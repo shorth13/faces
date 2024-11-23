@@ -77,7 +77,7 @@ toc;
 
 disp('Plotting ROC metrics...');
 cv = crossval(Mdl);
-rm=rocmetrics(cv);
+rm = rocmetrics(cv);
 nexttile(t);
 plot(rm);
 
