@@ -63,7 +63,7 @@ person2 = 'Eduardo_Duhalde';
 
 mask1 = imds.Labels==person1;
 mask2 = imds.Labels==person2;
-mask = mask1|mask2;
+mask  = mask1|mask2;
 
 X = X0(:,mask);
 
