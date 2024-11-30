@@ -91,7 +91,6 @@ title(['Number of features: ' ,num2str(k)]);
 Eigenfaces = arrayfun(@(j)reshape((U(:,j)-min(U(:,j)))./(max(U(:,j))-min(U(:,j))),targetSize), ...
     1:size(U,2),'uni',false);
 
-%nexttile(t);
-figure;
+nexttile(t);
 montage(Eigenfaces(1:16));
 colormap(gray);
