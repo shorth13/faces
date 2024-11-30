@@ -86,8 +86,7 @@ zlabel(cv.PredictorNames(6));
 % ROC = receiver operating characteristic
 % See https://en.wikipedia.org/wiki/Receiver_operating_characteristic
 disp('Plotting ROC metrics...');
-cv = crossval(Mdl);
-rm = rocmetrics(cv, Score, persons);
+rm = rocmetrics(imds.Labels, Score, persons);
 nexttile(t);
 plot(rm);
 
