@@ -74,8 +74,8 @@ plot(rm);
 
 % Generate a plot in feature space using top two features
 nexttile(t);
-scatter(X(:,1),X(:,2),50,c);
-title('A 2-predictor plot');
+scatter3(X(:,1),X(:,2),X(:,3),50,c);
+title('A 3-predictor plot');
 xlabel(cv.PredictorNames(1));
 ylabel(cv.PredictorNames(2));
 
