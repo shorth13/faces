@@ -93,4 +93,4 @@ Eigenfaces = arrayfun(@(j)reshape((U(:,j)-min(U(:,j)))./(max(U(:,j))-min(U(:,j))
 
 nexttile(t);
 montage(Eigenfaces(1:16));
-colormap(jet);
+colormap(gray);
