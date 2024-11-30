@@ -19,11 +19,12 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','folderna
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
 
 disp('Creating subset of 2 persons...');
-persons {'Angelina_Jolie', 'Eduardo_Duhalde', 'George_W_Bush'}
+persons = {'Angelina_Jolie', 'Eduardo_Duhalde', 'George_W_Bush'}
 
-mask0_1 = imds0.Labels==person1;
-mask0_2 = imds0.Labels==person2;
-mask0  = mask0_1|mask0_2;
+idx = num2cell(imds0.Labels==persons,2);
+
+
+
 idx0 = find(mask0);
 
 imds = subset(imds0, idx0);
