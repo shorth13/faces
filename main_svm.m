@@ -80,14 +80,14 @@ toc;
 nexttile(t);
 scatter(X(:,1),X(:,2),60,c);
 title('A top 2-predictor plot');
-xlabel(cv.PredictorNames(1));
-ylabel(cv.PredictorNames(2));
+xlabel('x1');
+ylabel('x2');
 
 nexttile(t);
 scatter(X(:,3),X(:,4),60,c);
 title('A next 2-predictor plot');
-xlabel(cv.PredictorNames(3));
-ylabel(cv.PredictorNames(4));
+xlabel('x3');
+ylabel('x4');
 
 %[YPred,Score] = predict(Mdl,X);
 [YPred,Score,Cost] = resubPredict(Mdl);
