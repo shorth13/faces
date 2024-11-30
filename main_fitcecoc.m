@@ -40,6 +40,15 @@ tic;
 [U,S,V] = svd(B,'econ');
 toc;
 
+% Get an montage of eigenfaces
+Eigenfaces = arrayfun(@(j)reshape((U(:,j)-min(U(:,j)))./(max(U(:,j))-min(U(:,j))),targetSize), ...
+    1:size(U,2),'uni',false);
+
+nexttile(t);
+montage(Eigenfaces(1:16));
+title('Top 16 Eigenfaces');
+colormap(gray);
+
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
 k = min(size(V,2),k);
@@ -69,16 +78,16 @@ toc;
 nexttile(t);
 scatter3(X(:,1),X(:,2),X(:,3),50,c);
 title('A top 3-predictor plot');
-xlabel(cv.PredictorNames(1));
-ylabel(cv.PredictorNames(2));
-zlabel(cv.PredictorNames(3));
+xlabel('x1');
+ylabel('x2');
+zlabel('x3');
 
 nexttile(t);
 scatter3(X(:,4),X(:,5),X(:,6),50,c);
 title('A next 3-predictor plot');
-xlabel(cv.PredictorNames(4));
-ylabel(cv.PredictorNames(5));
-zlabel(cv.PredictorNames(6));
+xlabel('x4');
+ylabel('x5');
+zlabel('x6');
 
 %[YPred,Score] = predict(Mdl,X);
 [YPred,Score,Cost] = resubPredict(Mdl);
@@ -97,11 +106,3 @@ nexttile(t);
 confusionchart(Y, YPred);
 title(['Number of features: ' ,num2str(k)]);
 
-% Get an montage of eigenfaces
-Eigenfaces = arrayfun(@(j)reshape((U(:,j)-min(U(:,j)))./(max(U(:,j))-min(U(:,j))),targetSize), ...
-    1:size(U,2),'uni',false);
-
-nexttile(t);
-montage(Eigenfaces(1:16));
-title('Top 16 Eigenfaces');
-colormap(gray);
