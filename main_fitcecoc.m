@@ -18,7 +18,7 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','folderna
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
 
 disp('Creating subset of several persons...');
-persons = {'Angelina_Jolie', 'Eduardo_Duhalde', 'George_W_Bush'}
+persons = {'Angelina_Jolie', 'Eduardo_Duhalde', 'Arnold_Schwarzenegger'}
 
 idx = ismember(imds0.Labels, persons);
 imds = subset(imds0, idx0);
