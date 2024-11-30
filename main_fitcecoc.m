@@ -40,6 +40,16 @@ tic;
 [U,S,V] = svd(B,'econ');
 toc;
 
+% Get an montage of eigenfaces
+Eigenfaces = arrayfun(@(j)reshape((U(:,j)-min(U(:,j)))./(max(U(:,j))-min(U(:,j))),targetSize), ...
+    1:size(U,2),'uni',false);
+
+nexttile(t);
+montage(Eigenfaces(1:16));
+title('Top 16 Eigenfaces');
+colormap(gray);
+
+
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
 k = min(size(V,2),k);
@@ -97,11 +107,3 @@ nexttile(t);
 confusionchart(Y, YPred);
 title(['Number of features: ' ,num2str(k)]);
 
-% Get an montage of eigenfaces
-Eigenfaces = arrayfun(@(j)reshape((U(:,j)-min(U(:,j)))./(max(U(:,j))-min(U(:,j))),targetSize), ...
-    1:size(U,2),'uni',false);
-
-nexttile(t);
-montage(Eigenfaces(1:16));
-title('Top 16 Eigenfaces');
-colormap(gray);
