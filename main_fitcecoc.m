@@ -42,6 +42,8 @@ toc;
 
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
+k = min(size(V,2),k);
+
 X0 = V(:,1:k);
 
 [lia,locb] = ismember(imds.Labels, persons);
