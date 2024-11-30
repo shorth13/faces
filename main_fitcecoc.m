@@ -60,8 +60,9 @@ cm=[1,0,0;
 c=cm(uint8(Y),:);
 
 disp('Training Support Vector Machine...');
+options = statset('UseParallel',true);
 tic;
-Mdl = fitcecoc(X, Y,'Verbose', 2,'Learners','svm');
+Mdl = fitcecoc(X, Y,'Verbose', 2,'Learners','svm','Options',options);
 toc;
 
 % ROC = receiver operating characteristic
