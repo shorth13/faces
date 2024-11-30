@@ -9,7 +9,7 @@
 %----------------------------------------------------------------
 % Classification into 3 classes
 targetSize=[128,128];
-k=60;                                   % Number of features to consider
+k=30;                                   % Number of features to consider
 location = fullfile('lfw');
 
 disp('Creating image datastore...');
