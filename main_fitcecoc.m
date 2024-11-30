@@ -7,8 +7,7 @@
 % Copying:  (C) Marek Rychlik, 2020. All rights reserved.
 % 
 %----------------------------------------------------------------
-% Binary classification
-% Distinguish between two persons (Angenlina Jolie and Eduardo Duhalde).
+% Classification into 3 classes
 targetSize=[128,128];
 k=60;                                   % Number of features to consider
 location = fullfile('lfw');
