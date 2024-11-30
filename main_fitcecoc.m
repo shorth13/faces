@@ -18,11 +18,11 @@ disp('Creating image datastore...');
 imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
                       'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
 
-disp('Creating subset of 2 persons...');
+disp('Creating subset of several persons...');
 persons = {'Angelina_Jolie', 'Eduardo_Duhalde', 'George_W_Bush'}
 
-idx0 = num2cell(imds0.Labels==persons,2);
-idx = cellfun(@(x)or(x(:)),);
+idx0 = cell2mat(num2cell(imds0.Labels==persons,2));
+idx = rowfun(@disp,idx0);
 
 
 
