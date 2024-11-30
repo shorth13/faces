@@ -10,9 +10,8 @@
 % Binary classification
 % Distinguish between two persons (Angenlina Jolie and Eduardo Duhalde).
 targetSize=[128,128];
-k=25;                                   % Number of features to consider
-
-t=tiledlayout('flow');
+k=60;                                   % Number of features to consider
+location = fullfile('lfw');
 
 disp('Creating image datastore...');
 imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
@@ -21,14 +20,10 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','folderna
 disp('Creating subset of several persons...');
 persons = {'Angelina_Jolie', 'Eduardo_Duhalde', 'George_W_Bush'}
 
-idx0 = cell2mat(num2cell(imds0.Labels==persons,2));
-idx = rowfun(@disp,idx0);
-
-
-
-idx0 = find(mask0);
-
+idx = ismember(imds0.Labels, persons);
 imds = subset(imds0, idx0);
+
+t=tiledlayout('flow');
 nexttile(t);
 montage(imds);
 
@@ -46,32 +41,27 @@ tic;
 [U,S,V] = svd(B,'econ');
 toc;
 
-
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
 X0 = V(:,1:k);
 
-mask1 = imds.Labels==person1;
-mask2 = imds.Labels==person2;
-mask = mask1|mask2;
-idx = find(mask);
+[lia,locb] = ismember(imds.Labels, persons);
 
-X = X0(idx,:);
-Y = imds.Labels(idx);
-
-% Limit the number of categories to just two
-cats = {person1,person2};
+X = X0(lia,:);
+Y = imds.Labels(lia);
+cats = persons;
 Y=categorical(Y,cats);
 
 % Create colormap
 cm=[1,0,0;
-    0,0,1];
+    0,0,1,
+    0,1,0];
 % Assign colors to target values
 c=cm(uint8(Y),:);
 
 disp('Training Support Vector Machine...');
 tic;
-Mdl = fitcsvm(X, Y,'Verbose', 1);
+Mdl = fitcecoc(X, Y,'Verbose', 1);
 toc;
 
 % ROC = receiver operating characteristic
