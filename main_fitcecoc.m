@@ -21,7 +21,7 @@ disp('Creating subset of several persons...');
 persons = {'Angelina_Jolie', 'Eduardo_Duhalde', 'Arnold_Schwarzenegger'}
 
 idx = ismember(imds0.Labels, persons);
-imds = subset(imds0, idx0);
+imds = subset(imds0, idx);
 
 t=tiledlayout('flow');
 nexttile(t);
