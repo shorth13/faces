@@ -76,14 +76,6 @@ tic;
 Mdl = fitcsvm(X, Y,'Verbose', 1);
 toc;
 
-% ROC = receiver operating characteristic
-% See https://en.wikipedia.org/wiki/Receiver_operating_characteristic
-disp('Plotting ROC metrics...');
-cv = crossval(Mdl);
-rm = rocmetrics(cv);
-nexttile(t);
-plot(rm);
-
 % Generate a plot in feature space using top two features
 nexttile(t);
 scatter(X(:,1),X(:,2),60,c);
@@ -99,6 +91,14 @@ ylabel(cv.PredictorNames(4));
 
 %[YPred,Score] = predict(Mdl,X);
 [YPred,Score,Cost] = resubPredict(Mdl);
+
+% ROC = receiver operating characteristic
+% See https://en.wikipedia.org/wiki/Receiver_operating_characteristic
+disp('Plotting ROC metrics...');
+rm = rocmetrics(cv);
+nexttile(t);
+plot(rm);
+
 
 disp('Plotting confusion matrix...')
 nexttile(t);
