@@ -21,7 +21,8 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','folderna
 disp('Creating subset of 2 persons...');
 persons = {'Angelina_Jolie', 'Eduardo_Duhalde', 'George_W_Bush'}
 
-idx = num2cell(imds0.Labels==persons,2);
+idx0 = num2cell(imds0.Labels==persons,2);
+idx = cellfun(@(x)or(x(:)),);
 
 
 
