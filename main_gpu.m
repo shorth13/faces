@@ -39,6 +39,6 @@ if existsOnGPU(Sgpu)
 end
 U = gather(Ugpu);
 V = gather(Vgpu);
-S = gather(S);
+S = gather(Sgpu);
 
 plot(log(diag(S)),'.');
