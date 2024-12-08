@@ -1,6 +1,9 @@
-function YPred = recognize_faces(Images)
+function YPred = recognize_faces(RGB)
 % recognize_faces - map images of faces to people names    
     load('model');
+    num_images = size(RGB,3);
+    G = arrayfun(@(j)imresize(im2gray(RGB(:,:,j)),targetSize),...
+                1:num_images);
     B = cat(3,Images{:});
     D = prod(targetSize);
     B = reshape(B,D,[]);
