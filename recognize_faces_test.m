@@ -13,4 +13,4 @@ imds = subset(imds0, idx);
 
 RGB = readall(imds);
 
-YPred = recognize_faces(RGB(1)');
+YPred = recognize_faces(RGB(1));
