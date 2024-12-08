@@ -7,6 +7,8 @@
 % Copying:  (C) Marek Rychlik, 2020. All rights reserved.
 % 
 %----------------------------------------------------------------
+% A driver for function RECOGNIZE_FACES.
+% It passes a number of images from the database of images
 
 location = fullfile('lfw');
 
