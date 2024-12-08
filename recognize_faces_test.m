@@ -8,4 +8,7 @@ imds0 = imageDatastore(location,...
 
 load('model',["persons"])
 
+idx = ismember(imds0.Labels, persons);
+imds = subset(imds0, idx);
+
 RGB = readimage(imds,1);
