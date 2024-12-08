@@ -3,8 +3,9 @@ function YPred = recognize_faces(RGB)
 %  YPred = recognize_faces(RGB) accepts a cell array RGB of images, which
 % should be RGB images. YPred returns a categorical array of image
 % labels.
-
-    load('model');
+    ;
+    % Load precomputed model from a MAT file
+    load('model.mat');
     num_images = size(RGB,3);
     % Get grayscale images of the desired size
     Grayscale = cellfun(@(I)imresize(im2gray(I),targetSize),...
