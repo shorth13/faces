@@ -52,7 +52,11 @@ colormap(gray);
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
 k = min(size(V,2),k);
+% Discard unnecessary columns
 V(:,1:k);
+% Discard unnecessary singular values
+S = diag(S);
+S = S(1:k);
 X0 = V
 
 [lia,locb] = ismember(imds.Labels, persons);
