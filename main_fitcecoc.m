@@ -7,7 +7,11 @@
 % Copying:  (C) Marek Rychlik, 2020. All rights reserved.
 % 
 %----------------------------------------------------------------
-% Classification into 3 classes
+% Classification into several classes
+% This script trains a facial recognition model. The model
+% is saved to a .MAT file, along with necessary data to perform facial
+% recognition.
+
 targetSize=[128,128];
 k=60;                                   % Number of features to consider
 location = fullfile('lfw');
