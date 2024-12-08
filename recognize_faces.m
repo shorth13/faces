@@ -14,7 +14,7 @@ function YPred = recognize_faces(RGB)
 
     % Extract features
     S = diag(S);
-    X = S \ (U' * B) 
+    X = S \ (U' * B);
     % Predict faces
     YPred = predict(Mdl, X, 'ObservationsIn','columns');
 end
