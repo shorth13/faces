@@ -13,6 +13,7 @@
 % and predicts the labels.
 %
 % As a visualization tool, it burns predicted labels into the images
+% and displays a montage.
 
 location = fullfile('lfw');
 
