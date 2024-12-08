@@ -10,7 +10,7 @@
 % Classification into several classes
 % This script trains a facial recognition model. The model
 % is saved to a .MAT file, along with necessary data to perform facial
-% recognition.
+% recognition:
 
 targetSize=[128,128];
 k=60;                                   % Number of features to consider
