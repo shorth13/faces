@@ -117,4 +117,4 @@ title(['Number of features: ' ,num2str(k)]);
 
 % Save the model and persons that the model recognizes.
 % NOTE: An important part of the submission.
-save('model','Mdl','persons','U','V','S','k','targetSize');
+save('model','Mdl','persons','U','V', 'targetSize');
