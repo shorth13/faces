@@ -13,7 +13,7 @@
 % recognition:
 
 targetSize = [128,128];
-k=40;                                   % Number of features to consider
+k=60;                                   % Number of features to consider
 location = fullfile('lfw');
 
 disp('Creating image datastore...');
