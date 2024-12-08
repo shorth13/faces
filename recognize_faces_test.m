@@ -14,3 +14,5 @@ imds = subset(imds0, idx);
 RGB = readall(imds);
 
 YPred = recognize_faces(RGB);
+
+montage(RGB);
