@@ -15,4 +15,8 @@ RGB = readall(imds);
 
 YPred = recognize_faces(RGB);
 
-montage(RGB);
+for j=1:numel(RGB)
+    RGBannotated{j} = insertObjectAnnotation(RGB{j}, 'rectangle', [10,10,100,20], YPred(j));
+end
+
+montage(RGBannotated);
