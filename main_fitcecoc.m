@@ -106,3 +106,4 @@ nexttile(t);
 confusionchart(Y, YPred);
 title(['Number of features: ' ,num2str(k)]);
 
+save('model','Mdl','persons');
