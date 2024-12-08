@@ -12,7 +12,7 @@
 % is saved to a .MAT file, along with necessary data to perform facial
 % recognition:
 
-targetSize=[128,128];
+targetSize = [128,128];
 k=30;                                   % Number of features to consider
 location = fullfile('lfw');
 
