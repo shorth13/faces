@@ -56,7 +56,6 @@ k = min(size(V,2),k);
 % Discard unnecessary data
 % Discard unnecessary columns
 V(:,1:k);
-% Discard unnecessary singular values
 S = diag(S);
 S = S(1:k);
 U=U(:,1:k);
