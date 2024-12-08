@@ -3,9 +3,9 @@ function YPred = recognize_faces(RGB)
     load('model');
     num_images = size(RGB,3);
     % Get grayscale images of the desired size
-    G = arrayfun(@(j)imresize(im2gray(RGB{j},targetSize),...
-                1:num_images);
-    B = cat(3,Images{:});
+    Grayscale = cellfun(@(I)imresize(im2gray(I),targetSize),...
+                        RGB);
+    B = cat(3,Grayscale{:});
     D = prod(targetSize);
     B = reshape(B,D,[]);
 
