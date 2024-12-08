@@ -1,5 +1,9 @@
 function YPred = recognize_faces(RGB)
-% recognize_faces - map images of faces to people names    
+% RECOGNIZE_FACES - map images of faces to people names    
+%  YPred = recognize_faces(RGB) accepts a cell array RGB of images, which
+% should be RGB images. YPred returns a categorical array of image
+% labels.
+
     load('model');
     num_images = size(RGB,3);
     % Get grayscale images of the desired size
