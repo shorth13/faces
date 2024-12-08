@@ -5,7 +5,7 @@ function YPred = recognize_faces(Images)
     D = prod(targetSize);
     B = reshape(B,D,[]);
 
-    disp('Normalizing data...');
+    % Normalizing data...';
     B = single(B)./256;
 
     % Extract features
