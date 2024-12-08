@@ -52,6 +52,8 @@ colormap(gray);
 % NOTE: Rows of V are observations, columns are features.
 % Observations need to be in rows.
 k = min(size(V,2),k);
+
+% Discard unnecessary data
 % Discard unnecessary columns
 V(:,1:k);
 % Discard unnecessary singular values
