@@ -63,6 +63,7 @@ U=U(:,1:k);
 % Find feature vectors of all images
 X0 = V;
 
+% Limit to people being recognized
 [lia,locb] = ismember(imds.Labels, persons);
 
 X = X0(lia,:);
