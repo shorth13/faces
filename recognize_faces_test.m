@@ -1,3 +1,13 @@
+%----------------------------------------------------------------
+% File:     recognize_faces_test.m
+%----------------------------------------------------------------
+%
+% Author:   Marek Rychlik (rychlik@arizona.edu)
+% Date:     Sun Dec  8 15:55:17 2024
+% Copying:  (C) Marek Rychlik, 2020. All rights reserved.
+% 
+%----------------------------------------------------------------
+
 location = fullfile('lfw');
 
 disp('Creating image datastore...');
