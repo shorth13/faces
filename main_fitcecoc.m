@@ -57,6 +57,8 @@ V(:,1:k);
 % Discard unnecessary singular values
 S = diag(S);
 S = S(1:k);
+U=U(:,1:k);
+
 X0 = V;
 
 [lia,locb] = ismember(imds.Labels, persons);
