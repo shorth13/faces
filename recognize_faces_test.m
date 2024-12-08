@@ -8,7 +8,9 @@
 % 
 %----------------------------------------------------------------
 % A driver for function RECOGNIZE_FACES.
+%
 % It passes a number of images from the database of images
+% and predicts the labels
 
 location = fullfile('lfw');
 
