@@ -60,6 +60,7 @@ S = diag(S);
 S = S(1:k);
 U=U(:,1:k);
 
+% Compute features
 X0 = V;
 
 [lia,locb] = ismember(imds.Labels, persons);
