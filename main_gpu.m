@@ -1,3 +1,13 @@
+%----------------------------------------------------------------
+% File:     main_gpu.m
+%----------------------------------------------------------------
+%
+% Author:   Marek Rychlik (rychlik@arizona.edu)
+% Date:     Mon Dec  9 07:43:04 2024
+% Copying:  (C) Marek Rychlik, 2020. All rights reserved.
+% 
+%----------------------------------------------------------------
+% Illustrates the use of GPU to find SVD.
 targetSize=[128,128];
 location = fullfile('lfw');
 svd_cache = fullfile('cache','svd.mat');
