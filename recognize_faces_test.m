@@ -30,6 +30,8 @@ imds = subset(imds0, idx);
 
 RGB = readall(imds);
 
+Y = imds.Labels;
+
 YPred = recognize_faces(RGB);
 
 % Burn labels into the images
@@ -38,3 +40,5 @@ for j=1:numel(RGB)
 end
 
 montage(RGBannotated);
+
+confusionchart(Y, YPred);
