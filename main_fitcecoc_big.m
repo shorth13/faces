@@ -70,7 +70,10 @@ c=cm(1+ mod(uint8(Y),size(cm,1)-1),:);
 disp('Training Support Vector Machine...');
 options = statset('UseParallel',true);
 tic;
-Mdl = fitcecoc(X, Y,'Verbose', 0,'Learners','svm','Options',options);
+Mdl = fitcecoc(X, Y,'Learners','svm',...
+               'Coding', 'binarycomplete',...
+               'Verbose', 0,
+               'Options',options);
 toc;
 
 %[YPred,Score] = predict(Mdl,X);
