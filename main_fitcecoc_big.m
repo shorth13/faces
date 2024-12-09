@@ -8,12 +8,15 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','folderna
 
 disp('Creating subset of several persons...');
 tbl = countEachLabel(imds0);
-idx = find(tbl{:,2}>=10);
-disp(['Number of images: ',num2str(sum(tbl{idx,2}))]);
+mask = tbl{:,2}>=10;
+disp(['Number of images: ',num2str(sum(tbl{mask,2}))]);
 
-persons = unique(tbl{idx,1});
+persons = unique(tbl{mask,1});
 
-imds = subset(imds0, idx);
+% Limit to people being recognized
+[lia,locb] = ismember(imds0.Labels, persons);
+
+imds = subset(imds0, lia);
 
 t=tiledlayout('flow');
 nexttile(t);
@@ -55,8 +58,6 @@ U = U(:,1:k);
 % Find feature vectors of all images
 X0 = V;
 
-% Limit to people being recognized
-[lia,locb] = ismember(imds.Labels, persons);
 
 X = X0(lia,:);
 Y = imds.Labels(lia);
