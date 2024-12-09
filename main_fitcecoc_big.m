@@ -59,8 +59,8 @@ U = U(:,1:k);
 X0 = V;
 
 
-X = X0(lia,:);
-Y = imds.Labels(lia);
+X = X0;
+Y = imds.Labels;
 cats = persons;
 Y=categorical(Y,cats);
 
