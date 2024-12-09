@@ -1,4 +1,4 @@
-targetSize = [128,128];
+targetSize = [196,196];
 k=120;                                   % Number of features to consider
 location = fullfile('lfw');
 
