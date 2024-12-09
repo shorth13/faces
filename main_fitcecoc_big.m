@@ -61,8 +61,6 @@ X0 = V;
 
 X = X0;
 Y = imds.Labels;
-cats = persons;
-Y=categorical(Y,cats);
 
 % Create colormap
 cm=jet;
