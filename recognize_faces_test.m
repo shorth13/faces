@@ -41,4 +41,5 @@ end
 
 montage(RGBannotated);
 
-confusionchart(Y, YPred);
+Accurary = numel(find(Y==YPred))/numel(Y);
+disp(['Accuracy: ', num2str(Accuracy)];
