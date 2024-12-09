@@ -82,7 +82,7 @@ c=cm(uint8(Y),:);
 
 disp('Training Support Vector Machine...');
 tic;
-Mdl = fitcsvm(X, Y,'Verbose', 1);
+Mdl = fitcsvm(X, Y,'Verbose', 1,'OptimizeHyperparameters','all');
 toc;
 
 % Generate a plot in feature space using top two features
