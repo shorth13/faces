@@ -84,7 +84,9 @@ c=cm(uint8(Y),:);
 disp('Training Support Vector Machine...');
 options = statset('UseParallel',true);
 tic;
-Mdl = fitcecoc(X, Y,'Verbose', 2,'Learners','svm','Options',options);
+Mdl = fitcecoc(X, Y,'Verbose', 2,'Learners','svm',...
+               'OptimizeHyperparameters','all',...
+               'Options',options);
 toc;
 
 % Generate a plot in feature space using top two features
