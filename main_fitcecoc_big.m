@@ -77,7 +77,7 @@ Mdl = fitcecoc(X, Y,'Learners','svm',...
 toc;
 
 %[YPred,Score] = predict(Mdl,X);
-[YPred,Score,Cost] = resubPredict(Mdl);
+YPred = predict(Mdl, X);
 
 disp(['Fraction of correctly predicted images:', ...
       num2str(numel(find(YPred==Y))/numel(Y))]);
