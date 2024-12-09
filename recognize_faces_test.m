@@ -41,5 +41,5 @@ end
 
 montage(RGBannotated);
 
-Accurary = numel(find(Y==YPred))/numel(Y);
-disp(['Fraction of correctly labeled images: ', num2str(Accuracy)];
+Accuracy = numel(find(Y==YPred))/numel(Y);
+disp(['Fraction of correctly labeled images: ', num2str(Accuracy)]);
