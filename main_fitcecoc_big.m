@@ -11,7 +11,6 @@ tbl = countEachLabel(imds0);
 idx = find(tbl{:,2}>=10);
 disp(['Number of images: ',num2str(sum(tbl{idx,2}))]);
 
-
 persons = unique(tbl{idx,1});
 
 imds = subset(imds0, idx);
