@@ -17,6 +17,7 @@ function YPred = recognize_faces(RGB)
 
     % Normalizing data...';
     B = single(B)./256;
+    [B,C,SD] = normalize(B);
 
     % Extract features
     X = U' * B;
