@@ -42,4 +42,4 @@ end
 montage(RGBannotated);
 
 Accuracy = numel(find(Y==YPred))/numel(Y);
-disp(['Fraction of correctly labeled images: ', num2str(Accuracy)]);
+disp(['Percentage of correctly labeled images: ', num2str(100*Accuracy)]);
