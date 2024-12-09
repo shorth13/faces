@@ -64,11 +64,9 @@ cats = persons;
 Y=categorical(Y,cats);
 
 % Create colormap
-cm=[1,0,0;
-    0,0,1,
-    0,1,0];
+cm=jet;
 % Assign colors to target values
-c=cm(uint8(Y),:);
+c=cm(1+ mod(uint8(Y),size(cm,1)-1),:);
 
 disp('Training Support Vector Machine...');
 options = statset('UseParallel',true);
@@ -94,19 +92,8 @@ zlabel('x6');
 %[YPred,Score] = predict(Mdl,X);
 [YPred,Score,Cost] = resubPredict(Mdl);
 
-% ROC = receiver operating characteristic
-% See https://en.wikipedia.org/wiki/Receiver_operating_characteristic
-disp('Plotting ROC metrics...');
-rm = rocmetrics(imds.Labels, Score, persons);
-nexttile(t);
-plot(rm);
-
-
-
-disp('Plotting confusion matrix...')
-nexttile(t);
-confusionchart(Y, YPred);
-title(['Number of features: ' ,num2str(k)]);
+disp(['Fraction of correctly predicted images:', ...
+      num2str(numel(find(YPred==Y))/numel(Y))]);
 
 % Save the model and persons that the model recognizes.
 % NOTE: An important part of the submission.
