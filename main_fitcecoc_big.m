@@ -8,7 +8,7 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','folderna
 
 disp('Creating subset of several persons...');
 tbl = countEachLabel(imds0);
-mask = tbl{:,2}>=10;
+mask = tbl{:,2}>=10 & tbl{:,2}<=30;
 disp(['Number of images: ',num2str(sum(tbl{mask,2}))]);
 
 persons = unique(tbl{mask,1});
