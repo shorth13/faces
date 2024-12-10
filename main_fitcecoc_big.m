@@ -3,8 +3,10 @@ k = 60;                                 % Number of features to consider
 location = fullfile('lfw');
 
 disp('Creating image datastore...');
-imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','foldernames',...
-                      'ReadFcn', @(filename)imresize(im2gray(imread(filename)),targetSize));
+read_fcn = @(filename)imresize(im2gray(imread(filename)),targetSize);
+imds0 = imageDatastore(location,'IncludeSubfolders',true,...
+                       'LabelSource','foldernames',...
+                      'ReadFcn', read_fcn);
 
 disp('Creating subset of several persons...');
 tbl = countEachLabel(imds0);
