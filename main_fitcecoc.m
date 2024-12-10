@@ -40,7 +40,13 @@ B = reshape(B,D,[]);
 disp('Normalizing data...');
 B = single(B)./256;
 % NOTE: Normalization subtracts the mean pixel value
-% from all pixels and divides by standard deviation.
+% from all pixels and divides by standard deviation. It is
+% equivalent to:
+%     [B,C,SD] = normalize(B, 1)
+% This procedure is different from an alternative,
+%     [B,C,SD] = normalize(B, 2)
+% which computes the 'mean face' and subtracts it from every
+% face. SD is then the l^2-norm between a face and mean face.
 [B,C,SD] = normalize(B);
 tic;
 [U,S,V] = svd(B,'econ');
