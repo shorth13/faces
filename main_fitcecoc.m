@@ -69,20 +69,20 @@ k = min(size(V,2),k);
 W = S * V';                             % Transform V to weights (ala PCA)
 W = W(1:k,:);                           % Keep first K weights
 % NOTE: We will never again need singular values S
-% S = diag(S);
-% S = S(1:k);
+S = diag(S);
+S = S(1:k);
 U = U(:,1:k);                           % Keep K eigenfaces
 
 % Find feature vectors of all images
 X = W';
-Y = imds.Labels;
+Y = categorical(imds.Labels, persons);
 
 % Create colormap
 cm=[1,0,0;
     0,0,1,
     0,1,0];
 % Assign colors to target values
-c=cm(uint8(Y),:);
+c=cm(1+mod(uint8(Y),size(cm,1)),:);
 
 disp('Training Support Vector Machine...');
 options = statset('UseParallel',true);
