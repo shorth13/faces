@@ -1,5 +1,5 @@
 targetSize = [128,128];
-k = 60;                                 % Number of features to consider
+k = 80;                                 % Number of features to consider
 location = fullfile('lfw');
 
 disp('Creating image datastore...');
@@ -33,7 +33,7 @@ B = reshape(B,D,[]);
 
 disp('Normalizing data...');
 B = single(B)./256;
-[B,C,SD] = normalize(B);
+[B,C,SD] = normalize(B,2);
 tic;
 [U,S,V] = svd(B,'econ');
 toc;
@@ -69,21 +69,20 @@ cm=jet;
 % Assign colors to target values
 c=cm(1+ mod(uint8(Y),size(cm,1)-1),:);
 
-disp('Training Support Vector Machine...');
+disp('Training multiple Support Vector Machines...');
 options = statset('UseParallel',true);
 tic;
 
 Mdl = fitcecoc(X, Y,'Learners','svm',...
-               'NumConcurrent', 1,...
                'Options',options);
 toc;
 
 %[YPred,Score] = predict(Mdl,X);
-[YPred, NegLoss, PBScore] = predict(Mdl, X);
+YPred = predict(Mdl, X);
 
 disp(['Fraction of correctly predicted images:', ...
       num2str(numel(find(YPred==Y))/numel(Y))]);
 
 % Save the model and persons that the model recognizes.
 % NOTE: An important part of the submission.
-save('model','Mdl','persons','U','targetSize');
+save('big_model','Mdl','persons','U','C','SD','targetSize');
