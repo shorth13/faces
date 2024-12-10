@@ -10,7 +10,7 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,...
 
 disp('Creating subset of several persons...');
 tbl = countEachLabel(imds0);
-mask = tbl{:,2}>=10 & tbl{:,2}<=12;
+mask = tbl{:,2}>=10 & tbl{:,2}<=40;
 disp(['Number of images: ',num2str(sum(tbl{mask,2}))]);
 
 persons = unique(tbl{mask,1});
@@ -52,14 +52,14 @@ colormap(gray);
 k = min(size(V,2),k);
 
 % Discard unnecessary data
-W = S * V;
-W = W(:,1:k);
+W = S * V';
+W = W(1:k,:);
 U = U(:,1:k);
 
 % Find feature vectors of all images
 % NOTE: The default is that columns correspond to features
 % and rows correspond to distinct observations (= images).
-X = W;
+X = W';
 Y = imds.Labels;
 
 % Create colormap
@@ -83,4 +83,4 @@ disp(['Fraction of correctly predicted images:', ...
 
 % Save the model and persons that the model recognizes.
 % NOTE: An important part of the submission.
-save('big_model','Mdl','persons','U','S','C','SD','targetSize');
+save('big_model','Mdl','persons','U','C','SD','targetSize');
