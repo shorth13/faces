@@ -23,8 +23,8 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','folderna
 disp('Creating subset of several persons...');
 persons = {'Angelina_Jolie', 'Eduardo_Duhalde', 'Amelie_Mauresmo'}
 
-idx = ismember(imds0.Labels, persons);
-imds = subset(imds0, idx);
+[lia, locb] = ismember(imds0.Labels, persons);
+imds = subset(imds0, lia);
 
 t=tiledlayout('flow');
 nexttile(t);
@@ -66,21 +66,16 @@ colormap(gray);
 k = min(size(V,2),k);
 
 % Discard unnecessary data
-V = V(:,1:k);
-S = diag(S);
-S = S(1:k);
+W = S * V';                              % Transform V to weights (ala PCA)
+W = W(1:k,:);
+% NOTE: We will never again need singular values S
+% S = diag(S);
+% S = S(1:k);
 U = U(:,1:k);
 
 % Find feature vectors of all images
-X0 = V;
-
-% Limit to people being recognized
-[lia,locb] = ismember(imds.Labels, persons);
-
-X = X0(lia,:);
-Y = imds.Labels(lia);
-cats = persons;
-Y=categorical(Y,cats);
+X = W';
+Y = imds.Labels;
 
 % Create colormap
 cm=[1,0,0;
