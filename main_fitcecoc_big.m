@@ -52,15 +52,14 @@ colormap(gray);
 k = min(size(V,2),k);
 
 % Discard unnecessary data
-V = V(:,1:k);
-S = diag(S);
-S = S(1:k);
+W = S * V;
+W = W(:,1:k);
 U = U(:,1:k);
 
 % Find feature vectors of all images
 % NOTE: The default is that columns correspond to features
 % and rows correspond to distinct observations (= images).
-X = V;
+X = W;
 Y = imds.Labels;
 
 % Create colormap
