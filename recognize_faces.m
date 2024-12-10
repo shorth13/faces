@@ -21,6 +21,7 @@ function YPred = recognize_faces(RGB)
 
     % Extract weights
     W = U' * B;
+
     % Predict faces
     X = W';
     YPred = predict(Mdl, X, 'ObservationsIn','columns');
