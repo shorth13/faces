@@ -24,7 +24,7 @@ function YPred = recognize_faces(RGB)
 
     % Predict faces
     X = W';
-    YPred = predict(Mdl, X, 'ObservationsIn','columns');
+    YPred = predict(Mdl, X);
 end
 
 
