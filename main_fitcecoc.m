@@ -92,8 +92,11 @@ c=cm(uint8(Y),:);
 disp('Training Support Vector Machine...');
 options = statset('UseParallel',true);
 tic;
+
+% You may try this, to get a more optimized model
+% 'OptimizeHyperparameters','all',...
+
 Mdl = fitcecoc(X, Y,'Verbose', 2,'Learners','svm',...
-               'OptimizeHyperparameters','all',...
                'Options',options);
 toc;
 
@@ -131,4 +134,4 @@ title(['Number of features: ' ,num2str(k)]);
 
 % Save the model and persons that the model recognizes.
 % NOTE: An important part of the submission.
-save('model','Mdl','persons','U', 'targetSize');
+save('model','Mdl','persons','U', 'S', 'targetSize');
