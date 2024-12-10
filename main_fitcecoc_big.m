@@ -72,13 +72,14 @@ c=cm(1+ mod(uint8(Y),size(cm,1)-1),:);
 disp('Training Support Vector Machine...');
 options = statset('UseParallel',true);
 tic;
+
 Mdl = fitcecoc(X, Y,'Learners','svm',...
                'NumConcurrent', 1,...
                'Options',options);
 toc;
 
 %[YPred,Score] = predict(Mdl,X);
-YPred = predict(Mdl, X);
+[YPred, NegLoss, PBScore] = predict(Mdl, X);
 
 disp(['Fraction of correctly predicted images:', ...
       num2str(numel(find(YPred==Y))/numel(Y))]);
