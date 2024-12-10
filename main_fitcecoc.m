@@ -39,6 +39,8 @@ B = reshape(B,D,[]);
 
 disp('Normalizing data...');
 B = single(B)./256;
+% NOTE: Normalization subtracts the mean pixel value
+% from all pixels and divides by standard deviation.
 [B,C,SD] = normalize(B);
 tic;
 [U,S,V] = svd(B,'econ');
