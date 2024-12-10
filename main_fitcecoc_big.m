@@ -1,3 +1,14 @@
+%----------------------------------------------------------------
+% File:     main_fitcecoc_big.m
+%----------------------------------------------------------------
+%
+% Author:   Marek Rychlik (rychlik@arizona.edu)
+% Date:     Mon Dec  9 22:04:52 2024
+% Copying:  (C) Marek Rychlik, 2020. All rights reserved.
+% 
+%----------------------------------------------------------------
+% Train model on a large number of images
+
 targetSize = [128,128];
 k = 80;                                 % Number of features to consider
 location = fullfile('lfw');
@@ -23,6 +34,8 @@ imds = subset(imds0, lia);
 t=tiledlayout('flow');
 nexttile(t);
 montage(imds);
+title([num2str(numel(imds.Labels)), ' faces']);
+
 
 disp('Reading all images');
 A = readall(imds);
