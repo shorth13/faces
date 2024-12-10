@@ -9,7 +9,7 @@ function YPred = recognize_faces(RGB)
     load('model.mat');
     num_images = size(RGB,3);
     % Get grayscale images of the desired size
-    Grayscale = cellfun(@(I)imresize(im2gray(I),targetSize),...
+    Grayscale = cellfun(@(I)imresize(im2gray(I), targetSize),...
                         RGB, 'uni',false);
     B = cat(3,Grayscale{:});
     D = prod(targetSize);
