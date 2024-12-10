@@ -58,10 +58,7 @@ S = S(1:k);
 U = U(:,1:k);
 
 % Find feature vectors of all images
-X0 = V;
-
-
-X = X0;
+X = V;
 Y = imds.Labels;
 
 % Create colormap
@@ -78,7 +75,7 @@ Mdl = fitcecoc(X, Y,'Learners','svm',...
 toc;
 
 %[YPred,Score] = predict(Mdl,X);
-YPred = predict(Mdl, X);
+YPred = predict(Mdl, X, 'observationsIn','rows');
 
 disp(['Fraction of correctly predicted images:', ...
       num2str(numel(find(YPred==Y))/numel(Y))]);
