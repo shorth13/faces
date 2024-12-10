@@ -66,12 +66,12 @@ colormap(gray);
 k = min(size(V,2),k);
 
 % Discard unnecessary data
-W = S * V';                              % Transform V to weights (ala PCA)
-W = W(1:k,:);
+W = S * V';                             % Transform V to weights (ala PCA)
+W = W(1:k,:);                           % Keep first K weights
 % NOTE: We will never again need singular values S
 % S = diag(S);
 % S = S(1:k);
-U = U(:,1:k);
+U = U(:,1:k);                           % Keep K eigenfaces
 
 % Find feature vectors of all images
 X = W';
