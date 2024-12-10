@@ -10,7 +10,7 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,...
 
 disp('Creating subset of several persons...');
 tbl = countEachLabel(imds0);
-mask = tbl{:,2}>=10 & tbl{:,2}<=40;
+mask = tbl{:,2}>=10 & tbl{:,2}<=100;
 disp(['Number of images: ',num2str(sum(tbl{mask,2}))]);
 
 persons = unique(tbl{mask,1});
