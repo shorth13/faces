@@ -38,7 +38,7 @@ D = prod(targetSize);
 B = reshape(B,D,[]);
 
 disp('Normalizing data...');
-oB = single(B)./256;
+B = single(B)./256;
 [B,C,SD] = normalize(B);
 tic;
 [U,S,V] = svd(B,'econ');
