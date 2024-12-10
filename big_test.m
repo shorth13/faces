@@ -9,6 +9,9 @@ imds0 = imageDatastore(location,...
 load('big_model',["persons"])
 
 idx = ismember(imds0.Labels, persons);
+my_idx = randperm(1:numel(idx));
+idx = idx(my_idx);
+
 imds = subset(imds0, idx);
 
 RGB = readall(imds);
