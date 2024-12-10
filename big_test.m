@@ -50,8 +50,9 @@ function YPred = i_recognize_faces(RGB)
     B = (B - C) ./ SD;
 
     % Extract features
-    X = (U' * B) ./ S;
+    W = U' * B;
     % Predict faces
+    X = W';
     YPred = predict(Mdl, X);
 end
 
