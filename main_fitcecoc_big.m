@@ -78,8 +78,8 @@ toc;
 %[YPred,Score] = predict(Mdl,X);
 YPred = predict(Mdl, X);
 
-disp(['Fraction of correctly predicted images:', ...
-      num2str(numel(find(YPred==Y))/numel(Y))]);
+disp(['Percentage of correctly predicted images:', ...
+      num2str(100*numel(find(YPred==Y))/numel(Y)),'%']);
 
 % Save the model and persons that the model recognizes.
 % NOTE: An important part of the submission.
