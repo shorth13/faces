@@ -7,7 +7,7 @@ function YPred = recognize_faces(RGB)
     % Load precomputed model from a MAT file. For a format
     % of the file, see the M-file main_fitcecoc.m. 
     load('model.mat');
-    num_images = size(RGB,3);
+    num_images = size(RGB, 3);
     % Get grayscale images of the desired size
     Grayscale = cellfun(@(I)imresize(im2gray(I), targetSize),...
                         RGB, 'uni',false);
