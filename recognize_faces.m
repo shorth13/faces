@@ -19,9 +19,10 @@ function YPred = recognize_faces(RGB)
     B = single(B)./256;
     [B, C, SD] = normalize(B);
 
-    % Extract features
-    X = (U' * B) ./ S;
+    % Extract weights
+    W = U' * B;
     % Predict faces
+    X = W';
     YPred = predict(Mdl, X, 'ObservationsIn','columns');
 end
 
