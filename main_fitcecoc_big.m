@@ -58,6 +58,8 @@ S = S(1:k);
 U = U(:,1:k);
 
 % Find feature vectors of all images
+% NOTE: The default is that columns correspond to features
+% and rows correspond to distinct observations (= images).
 X = V;
 Y = imds.Labels;
 
@@ -75,7 +77,7 @@ Mdl = fitcecoc(X, Y,'Learners','svm',...
 toc;
 
 %[YPred,Score] = predict(Mdl,X);
-YPred = predict(Mdl, X, 'observationsIn','rows');
+YPred = predict(Mdl, X);
 
 disp(['Fraction of correctly predicted images:', ...
       num2str(numel(find(YPred==Y))/numel(Y))]);
