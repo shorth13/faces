@@ -13,7 +13,7 @@ function YPred = recognize_faces(RGB)
                         RGB, 'uni',false);
     B = cat(3,Grayscale{:});
     D = prod(targetSize);
-    B = reshape(B,D,[]);
+    B = reshape(B, D, []);
 
     % Normalizing data...';
     B = single(B)./256;
