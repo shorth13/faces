@@ -8,11 +8,13 @@ imds0 = imageDatastore(location,...
 
 load('big_model',["persons"])
 
-idx = ismember(imds0.Labels, persons);
-my_idx = randperm(1:numel(idx));
+mask = ismember(imds0.Labels, persons);
+idx = find(mask);
+my_idx = randperm(numel(idx));
+my_idx = my_idx(1:min(16,numel(idx)));
 idx = idx(my_idx);
 
-imds = subset(imds0, idx);
+imds = subset(imds0, my_idx);
 
 RGB = readall(imds);
 
@@ -25,9 +27,9 @@ correct = Y == YPred
 % Burn labels into the images
 for j=1:numel(RGB)
     if correct(j)
-        color = 'yellow'
+        color = 'yellow';
     else
-        color = 'red'
+        color = 'red';
     end
     RGBannotated{j} = insertObjectAnnotation(RGB{j}, ...
                                              'rectangle', [10,10,100,20], ...
