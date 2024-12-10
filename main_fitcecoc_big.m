@@ -84,4 +84,4 @@ disp(['Fraction of correctly predicted images:', ...
 
 % Save the model and persons that the model recognizes.
 % NOTE: An important part of the submission.
-save('big_model','Mdl','persons','U','C','SD','targetSize');
+save('big_model','Mdl','persons','U','S','C','SD','targetSize');
