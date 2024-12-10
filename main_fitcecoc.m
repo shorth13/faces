@@ -39,7 +39,7 @@ B = reshape(B,D,[]);
 
 disp('Normalizing data...');
 B = single(B)./256;
-[B,C,SD] = normalize(B, 1);
+[B,C,SD] = normalize(B, 2);
 tic;
 [U,S,V] = svd(B,'econ');
 toc;
