@@ -125,8 +125,6 @@ rm = rocmetrics(imds.Labels, Score, persons);
 nexttile(t);
 plot(rm);
 
-
-
 disp('Plotting confusion matrix...')
 nexttile(t);
 confusionchart(Y, YPred);
