@@ -22,7 +22,7 @@ Y = imds.Labels;
 
 YPred = i_recognize_faces(RGB);
 
-correct = Y == YPred
+correct = Y == YPred;
 
 % Burn labels into the images
 for j=1:numel(RGB)
