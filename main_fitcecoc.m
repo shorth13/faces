@@ -23,6 +23,17 @@ imds0 = imageDatastore(location,'IncludeSubfolders',true,'LabelSource','folderna
 disp('Creating subset of several persons...');
 persons = {'Angelina_Jolie', 'Eduardo_Duhalde', 'Amelie_Mauresmo'}
 
+
+% NOTE: Alternatively, you could pick people based on some criteria
+% Below you find code that picks people with at least 10 and not more
+% than 40 images
+%
+% tbl = countEachLabel(imds0);
+% mask = tbl{:,2}>=10 & tbl{:,2}<=40;
+% disp(['Number of images: ',num2str(sum(tbl{mask,2}))]);
+% persons = unique(tbl{mask,1});
+
+
 [lia, locb] = ismember(imds0.Labels, persons);
 imds = subset(imds0, lia);
 
