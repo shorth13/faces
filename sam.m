@@ -1,0 +1,9 @@
+filepath = fullfile('lfw','Angelina_Jolie','Angelina_Jolie_0003.jpg');
+I = imread(filepath);
+[masks,scores] = imsegsam(I, MinObjectArea=3000, ...
+                          ScoreThreshold=0.8,...
+                          ExecutionEnvironment="gpu",...
+                          Verbose=true);
+labelMatrix = labelmatrix(masks);
+maskOverlay = labeloverlay(I,labelMatrix);
+imshow(maskOverlay,[])
