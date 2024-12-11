@@ -11,10 +11,11 @@ load('big_model',["persons"])
 [lia, locb] = ismember(imds0.Labels, persons);
 idx = find(lia);
 my_idx = randperm(numel(idx));
-my_idx = my_idx(1, min(numel(idx),16));
+my_idx = my_idx(1:min(numel(idx),16));
 idx = idx(my_idx);
-imds = subset(imds1, idx);
+imds = subset(imds0, idx);
 
+imds.reset;
 RGB = readall(imds);
 
 Y = imds.Labels;
@@ -51,7 +52,7 @@ function YPred = i_recognize_faces(RGB)
     % Load precomputed model from a MAT file. For a format
     % of the file, see the M-file main_fitcecoc.m. 
     load('big_model.mat');
-    num_images = size(RGB,3);
+    num_images = numel(RGB,3);
     % Get grayscale images of the desired size
     Grayscale = cellfun(@(I)imresize(im2gray(I),targetSize),...
                         RGB, 'uni',false);
