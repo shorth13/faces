@@ -25,6 +25,7 @@ YPred = i_recognize_faces(RGB);
 correct = Y == YPred;
 
 % Burn labels into the images
+Rgbannotated = {};
 for j=1:numel(RGB)
     if correct(j)
         color = 'yellow';
