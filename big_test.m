@@ -11,7 +11,7 @@ load('big_model',["persons"])
 [lia, locb] = ismember(imds0.Labels, persons);
 idx = find(lia);
 my_idx = randperm(numel(idx));
-my_idx = my_idx(1:min(numel(idx),16));
+my_idx = my_idx(1:min(numel(idx),64));
 idx = idx(my_idx);
 imds = subset(imds0, idx);
 
