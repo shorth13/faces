@@ -1,3 +1,14 @@
+%----------------------------------------------------------------
+% File:     big_test.m
+%----------------------------------------------------------------
+%
+% Author:   Marek Rychlik (rychlik@arizona.edu)
+% Date:     Tue Dec 10 18:19:58 2024
+% Copying:  (C) Marek Rychlik, 2020. All rights reserved.
+% 
+%----------------------------------------------------------------
+% A test program for a large data (2500 images) facial recognition
+
 location = fullfile('lfw');
 
 disp('Creating image datastore...');
