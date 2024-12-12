@@ -11,13 +11,18 @@
 % model to divide an image into "objects". One of the objects will be
 % the person's face. Thus, we can focus on facial recognition rather than
 % just picking the correct image out of a collection of, say, 2500 images
+% The mask is precise enough to identify hair.
 
-filepath = fullfile('lfw','Angelina_Jolie','Angelina_Jolie_0003.jpg');
-I = imread(filepath);
-[masks,scores] = imsegsam(I, MinObjectArea=3000, ...
-                          ScoreThreshold=0.8,...
-                          ExecutionEnvironment="gpu",...
-                          Verbose=true);
-labelMatrix = labelmatrix(masks);
-maskOverlay = labeloverlay(I,labelMatrix);
-imshow(maskOverlay,[])
+location = fullfile('lfw','Angelina_Jolie');
+imds = imageDatastore(location);
+while hasdata(imds)
+    I = read(imds);
+    [masks,scores] = imsegsam(I, MinObjectArea=1000, ...
+                              ScoreThreshold=0.8,...
+                              ExecutionEnvironment="auto",...
+                              Verbose=true);
+    labelMatrix = labelmatrix(masks);
+    maskOverlay = labeloverlay(I,labelMatrix);
+    imshow(maskOverlay,[])
+    pause(5);
+end
