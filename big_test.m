@@ -11,7 +11,7 @@
 
 location = fullfile('lfw');
 % Specify the noise level (variance of the noise)
-noiseLevel = 0.02; % Adjust this to control the noise intensity
+noiseLevel = 0.03; % Adjust this to control the noise intensity
 
 
 disp('Creating image datastore...');
