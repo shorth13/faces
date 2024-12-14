@@ -7,7 +7,7 @@
 % Copying:  (C) Marek Rychlik, 2020. All rights reserved.
 % 
 %----------------------------------------------------------------
-% Example: Adding white noise to a 128x128 grayscale image
+% Example: Adding white noise to a grayscale or color image
 
 % Load or create a grayscale image with values in the range [0, 1]
 image = imread('peppers.png'); % Replace this with your actual image
