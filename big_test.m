@@ -32,7 +32,8 @@ imds = subset(imds0, idx);
 imds.reset;
 RGB = readall(imds);
 
-RGB=add_noise(RGB,noiseLevel);
+RGB = cellfun(@(image)imnoise(image, 'gaussian', 0, noiseLevel),...
+              RGB,'uni',false);
 
 Y = imds.Labels;
 
