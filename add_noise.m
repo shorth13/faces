@@ -1,3 +1,12 @@
+%----------------------------------------------------------------
+% File:     add_noise.m
+%----------------------------------------------------------------
+%
+% Author:   Marek Rychlik (rychlik@arizona.edu)
+% Date:     Sat Dec 14 12:34:12 2024
+% Copying:  (C) Marek Rychlik, 2020. All rights reserved.
+% 
+%----------------------------------------------------------------
 % Example: Adding white noise to a 128x128 grayscale image
 
 % Load or create a grayscale image with values in the range [0, 1]
