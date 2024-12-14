@@ -10,6 +10,9 @@
 % A test program for a large data (2500 images) facial recognition
 
 location = fullfile('lfw');
+% Specify the noise level (variance of the noise)
+noiseLevel = 0.01; % Adjust this to control the noise intensity
+
 
 disp('Creating image datastore...');
 % We read images in their original format
@@ -28,6 +31,8 @@ imds = subset(imds0, idx);
 
 imds.reset;
 RGB = readall(imds);
+
+RGB=add_noise(RGB,noiseLevel);
 
 Y = imds.Labels;
 
